@@ -6,6 +6,10 @@
  * @author linuxgemini
  * @license MIT
  * 
+ * SHOUTOUT TO:
+ *     Deviant Ollam
+ *     Ave
+ * 
  * Typical pin layout used:
  * -----------------------------------------------------------------------------------------
  *             MFRC522      Arduino       Arduino   Arduino    Arduino          Arduino

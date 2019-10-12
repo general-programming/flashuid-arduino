@@ -18,3 +18,7 @@ easy card uid cloning (mifare classic 1k ofc)
 ## usage
   * tap original card to the reader
   * wait 2 seconds, tap the uid changeable card to the reader
+
+## special greetz
+  * the nfc hacking friend, [ave](https://gitlab.com/a)
+  * [deviant ollam](https://twitter.com/deviantollam)
