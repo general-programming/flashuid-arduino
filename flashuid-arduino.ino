@@ -53,7 +53,7 @@ void setup()
 
   //// Serial.println(F("LET'S GOOOOOOO"));
   
-  // Prepare key - all keys are set to FFFFFFFFFFFFh at chip delivery from the factory. See: line 33
+  // Prepare key - all keys are set to FFFFFFFFFFFFh at chip delivery from the factory. See: line 37
   for (byte i = 0; i < 6; i++) {
     key.keyByte[i] = 0xFF;
   }
