@@ -110,10 +110,7 @@ void loop()
     }
   } else {
     // if serial hasn't been gathered, gather it and set the clone check to true
-    TARGET_UID[0] = mfrc522.uid.uidByte[0];
-    TARGET_UID[1] = mfrc522.uid.uidByte[1];
-    TARGET_UID[2] = mfrc522.uid.uidByte[2];
-    TARGET_UID[3] = mfrc522.uid.uidByte[3];
+    memcpy(TARGET_UID, mfrc522.uid.uidByte, 4);
     
     lcd.print("UID now in RAM!");
     lcd.setCursor(0,1);
@@ -142,24 +139,9 @@ bool MIFARE_BackdooredSetUID(byte *uidbuff, byte bufsize, bool logErrors) {
 
   byte final_buf[16];               // we define our uid sector
 
-  final_buf[0] = uidbuff[0];
-  final_buf[1] = uidbuff[1];
-  final_buf[2] = uidbuff[2];
-  final_buf[3] = uidbuff[3];
-
+  memcpy(final_buf, uidbuff, 4);
   final_buf[4] = bcc_value;
-
-  final_buf[5] = end_buffer[0];
-  final_buf[6] = end_buffer[1];
-  final_buf[7] = end_buffer[2];
-  final_buf[8] = end_buffer[3];
-  final_buf[9] = end_buffer[4];
-  final_buf[10] = end_buffer[5];
-  final_buf[11] = end_buffer[6];
-  final_buf[12] = end_buffer[7];
-  final_buf[13] = end_buffer[8];
-  final_buf[14] = end_buffer[9];
-  final_buf[15] = end_buffer[10];
+  memcpy(&final_buf[5], end_buffer, 11);
 
   byte stat = mfrc522.MIFARE_Write((byte)0, final_buf, (byte)16); // write modified block 0 back to card, get its result as a custom byte
   if (stat != MFRC522::STATUS_OK) {
